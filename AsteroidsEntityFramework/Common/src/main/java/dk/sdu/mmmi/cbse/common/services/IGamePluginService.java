@@ -5,15 +5,15 @@ import dk.sdu.mmmi.cbse.common.data.World;
 
 public interface IGamePluginService {
     /**
-     * starts the game
-     * @param gameData contains data about events and the game window
+     * starts the specific component
+     * @param gameData contains data the game window and deltaTime
      * @param world contains data about the entities in the game
      */
     void start(GameData gameData, World world);
 
     /**
-     * stops the game
-     * @param gameData contains data about events and the game window
+     * stops the specific component
+     * @param gameData contains data the game window and deltaTime
      * @param world contains data about the entities in the game
      */
     void stop(GameData gameData, World world);

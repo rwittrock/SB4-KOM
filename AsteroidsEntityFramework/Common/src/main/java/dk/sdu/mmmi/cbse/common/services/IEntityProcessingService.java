@@ -7,7 +7,7 @@ public interface IEntityProcessingService {
 
     /**
      *Processes gameData and world.
-     * @param gameData contains data about events and the game window
+     * @param gameData contains data the game window and deltaTime
      * @param world contains data about the entities in the game
      */
     void process(GameData gameData, World world);

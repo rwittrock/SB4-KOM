@@ -9,8 +9,8 @@ import dk.sdu.mmmi.cbse.common.data.World;
  */
 public interface IPostEntityProcessingService  {
         /**
-         * idk what this does
-         * @param gameData contains data about events and the game window
+         * collision detection. Runs after everything else is rendered
+         * @param gameData contains data the game window and deltaTime
          * @param world contains data about the entities in the game
          */
         void process(GameData gameData, World world);

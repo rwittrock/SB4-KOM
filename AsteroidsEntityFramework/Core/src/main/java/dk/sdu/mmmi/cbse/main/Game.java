@@ -10,6 +10,8 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.enemysystem.EnemyControlSystem;
+import dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
@@ -44,6 +46,11 @@ public class Game
         );
 
         IGamePluginService playerPlugin = new PlayerPlugin();
+        IGamePluginService enemyPlugin = new EnemyPlugin();
+
+        IEntityProcessingService enemyProcess = new EnemyControlSystem();
+        entityPlugins.add(enemyPlugin);
+        entityProcessors.add(enemyProcess);
 
         IEntityProcessingService playerProcess = new PlayerControlSystem();
         entityPlugins.add(playerPlugin);
@@ -75,6 +82,7 @@ public class Game
         for (IEntityProcessingService entityProcessorService : entityProcessors) {
             entityProcessorService.process(gameData, world);
         }
+
     }
 
     private void draw() {
