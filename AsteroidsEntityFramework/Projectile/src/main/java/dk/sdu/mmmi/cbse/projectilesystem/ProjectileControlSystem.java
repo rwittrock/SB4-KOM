@@ -14,7 +14,12 @@ public class ProjectileControlSystem implements IEntityProcessingService {
             PositionPart positionPart = enemy.getPart(PositionPart.class);
             MovingPart movingPart = enemy.getPart(MovingPart.class);
 
+            //bullets are given high acceleration but set max speed, so they instantly
+            //have high speed. setUp just makes it move
+            movingPart.setAcceleration(10000000);
+            movingPart.setMaxSpeed(300);
             movingPart.setUp(true);
+
 
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
