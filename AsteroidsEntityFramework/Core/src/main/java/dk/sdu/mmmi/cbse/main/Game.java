@@ -50,7 +50,6 @@ public class Game
 
         IGamePluginService playerPlugin = new PlayerPlugin();
         IGamePluginService enemyPlugin = new EnemyPlugin();
-        IGamePluginService projectilePlugin = new ProjectilePlugin();
 
         IEntityProcessingService enemyProcess = new EnemyControlSystem();
         entityPlugins.add(enemyPlugin);
@@ -61,7 +60,6 @@ public class Game
         entityProcessors.add(playerProcess);
 
         IEntityProcessingService projectileProcess = new ProjectileControlSystem();
-        entityPlugins.add(projectilePlugin);
         entityProcessors.add(projectileProcess);
 
 

@@ -1,6 +1,8 @@
 package dk.sdu.mmmi.cbse.common.data;
 
 import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
+import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+
 import java.io.Serializable;
 import java.util.Map;
 import java.util.UUID;
@@ -16,6 +18,10 @@ public class Entity implements Serializable {
     
     public Entity() {
         parts = new ConcurrentHashMap<>();
+    }
+
+    public PositionPart getPositionPart(){
+        return this.getPart(PositionPart.class);
     }
     
     public void add(EntityPart part) {

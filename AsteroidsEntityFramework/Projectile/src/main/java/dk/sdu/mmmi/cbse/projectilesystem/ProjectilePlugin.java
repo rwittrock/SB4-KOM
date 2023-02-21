@@ -11,25 +11,28 @@ public class ProjectilePlugin implements IGamePluginService {
 
     private Entity projectile;
 
-    public ProjectilePlugin() {
+    private String sourceID;
+
+    public ProjectilePlugin(String sourceID) {
+        this.sourceID = sourceID;
     }
 
     @Override
     public void start(GameData gameData, World world) {
         // Add entities to the world
-        projectile = createProjectile(gameData);
+        projectile = createProjectile(gameData, world);
         world.addEntity(projectile);
     }
 
-    private Entity createProjectile(GameData gameData) {
+    private Entity createProjectile(GameData gameData, World world) {
 
         float deacceleration = 10;
         float acceleration = 200;
         float maxSpeed = 300;
         float rotationSpeed = 5;
-        float x = gameData.getDisplayWidth() / 2;
-        float y = gameData.getDisplayHeight() / 2;
-        float radians = 3.1415f / 2;
+        float x = world.getEntity(sourceID).getPositionPart().getX();
+        float y = world.getEntity(sourceID).getPositionPart().getY();
+        float radians = world.getEntity(sourceID).getPositionPart().getRadians();
 
         Entity projectile = new Projectile();
         projectile.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));

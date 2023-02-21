@@ -5,11 +5,15 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.services.IAbleToShoot;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
 
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.*;
 
-public class EnemyControlSystem implements IEntityProcessingService {
+public class EnemyControlSystem implements IEntityProcessingService, IAbleToShoot {
+    String sourceID;
+
     @Override
     public void process(GameData gameData, World world) {
         for (Entity enemy : world.getEntities(Enemy.class)) {
@@ -27,7 +31,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
             movingPart.setUp(gameData.getKeys().isDown(UP));
 */
 
-
+            this.sourceID = enemy.getID();
+            shoot(gameData, world, sourceID);
 
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
@@ -58,5 +63,13 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
+    }
+
+    @Override
+    public void shoot(GameData gameData, World world, String sourceID) {
+        if(Math.random()>0.99f){
+            ProjectilePlugin projectilePlugin = new ProjectilePlugin(sourceID);
+            projectilePlugin.start(gameData, world);
+        }
     }
 }
