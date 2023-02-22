@@ -1,4 +1,4 @@
-package main.java.dk.sdu.mmmi.cbse.common;
+package main.java.dk.sdu.mmmi.cbse.asteroidsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -22,13 +22,15 @@ public class AsteroidPlugin implements IGamePluginService {
 
     private Entity createAsteroid(GameData gameData) {
 
+        int size = 10;
         float deacceleration = 10;
-        float acceleration = 200;
-        float maxSpeed = 300;
-        float rotationSpeed = 5;
+        float acceleration = 50;
+        float maxSpeed = 100;
+        float rotationSpeed = 1;
         float x = gameData.getDisplayWidth() / 2;
         float y = gameData.getDisplayHeight() / 2;
-        float radians = 3.1415f / 2;
+        float radians = (float) (Math.random()*3.1415f);
+
 
         Entity asteroid = new Asteroid();
         asteroid.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));

@@ -5,17 +5,12 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
-import dk.sdu.mmmi.cbse.common.services.IAbleToShoot;
+
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import main.java.dk.sdu.mmmi.cbse.projectilesystem.Projectile;
+import dk.sdu.mmmi.cbse.commonAbleToShoot.IAbleToShoot;
 import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
 
-import java.util.UUID;
-
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.*;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.sqrt;
 
 /**
  *

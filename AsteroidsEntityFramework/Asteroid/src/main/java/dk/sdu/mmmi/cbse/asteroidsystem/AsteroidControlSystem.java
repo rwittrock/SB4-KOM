@@ -1,4 +1,4 @@
-package main.java.dk.sdu.mmmi.cbse.common;
+package main.java.dk.sdu.mmmi.cbse.asteroidsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -10,6 +10,7 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 public class AsteroidControlSystem implements IEntityProcessingService {
     String sourceID;
 
+
     @Override
     public void process(GameData gameData, World world) {
         for (Entity asteroid : world.getEntities(Asteroid.class)) {
@@ -17,6 +18,8 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             MovingPart movingPart = asteroid.getPart(MovingPart.class);
 
             this.sourceID = asteroid.getID();
+
+            movingPart.setUp(true);
 
             movingPart.process(gameData, asteroid);
             positionPart.process(gameData, asteroid);

@@ -15,6 +15,8 @@ import dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
+import main.java.dk.sdu.mmmi.cbse.asteroidsystem.AsteroidControlSystem;
+import main.java.dk.sdu.mmmi.cbse.asteroidsystem.AsteroidPlugin;
 import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectileControlSystem;
 import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
 
@@ -50,6 +52,7 @@ public class Game
 
         IGamePluginService playerPlugin = new PlayerPlugin();
         IGamePluginService enemyPlugin = new EnemyPlugin();
+        IGamePluginService asteroidPlugin = new AsteroidPlugin();
 
         IEntityProcessingService enemyProcess = new EnemyControlSystem();
         entityPlugins.add(enemyPlugin);
@@ -61,6 +64,10 @@ public class Game
 
         IEntityProcessingService projectileProcess = new ProjectileControlSystem();
         entityProcessors.add(projectileProcess);
+
+        IEntityProcessingService asteroidProcess = new AsteroidControlSystem();
+        entityPlugins.add(asteroidPlugin);
+        entityProcessors.add(asteroidProcess);
 
 
         // Lookup all Game Plugins using ServiceLoader
