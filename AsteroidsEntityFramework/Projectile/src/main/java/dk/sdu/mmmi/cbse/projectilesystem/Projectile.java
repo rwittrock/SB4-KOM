@@ -1,4 +1,4 @@
-package main.java.dk.sdu.mmmi.cbse.projectilesystem;
+package dk.sdu.mmmi.cbse.projectilesystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 

@@ -1,4 +1,4 @@
-package main.java.dk.sdu.mmmi.cbse.asteroidsystem;
+package dk.sdu.mmmi.cbse.asteroidsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;

@@ -8,7 +8,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonAbleToShoot.IAbleToShoot;
-import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
+import dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
 
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.*;
 

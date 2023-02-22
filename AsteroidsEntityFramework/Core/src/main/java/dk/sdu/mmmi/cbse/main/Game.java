@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import dk.sdu.mmmi.cbse.asteroidsystem.AsteroidControlSystem;
+import dk.sdu.mmmi.cbse.asteroidsystem.AsteroidPlugin;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -15,16 +17,12 @@ import dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
-import main.java.dk.sdu.mmmi.cbse.asteroidsystem.AsteroidControlSystem;
-import main.java.dk.sdu.mmmi.cbse.asteroidsystem.AsteroidPlugin;
-import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectileControlSystem;
-import main.java.dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
+import dk.sdu.mmmi.cbse.projectilesystem.ProjectileControlSystem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game
-        implements ApplicationListener {
+public class Game implements ApplicationListener {
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
