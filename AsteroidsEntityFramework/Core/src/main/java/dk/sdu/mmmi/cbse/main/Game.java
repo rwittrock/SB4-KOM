@@ -47,7 +47,7 @@ public class Game implements ApplicationListener {
         Gdx.input.setInputProcessor(
                 new GameInputProcessor(gameData)
         );
-
+/*
         IGamePluginService playerPlugin = new PlayerPlugin();
         IGamePluginService enemyPlugin = new EnemyPlugin();
         IGamePluginService asteroidPlugin = new AsteroidPlugin();
@@ -68,6 +68,8 @@ public class Game implements ApplicationListener {
         entityProcessors.add(asteroidProcess);
 
 
+
+ */
         // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : entityPlugins) {
             iGamePlugin.start(gameData, world);
