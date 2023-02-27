@@ -7,9 +7,8 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonAbleToShoot.IAbleToShoot;
-import dk.sdu.mmmi.cbse.projectilesystem.ProjectilePlugin;
 
-public class EnemyControlSystem implements IEntityProcessingService, IAbleToShoot {
+public class EnemyControlSystem implements IEntityProcessingService {
     String sourceID;
 
     @Override
@@ -30,7 +29,7 @@ public class EnemyControlSystem implements IEntityProcessingService, IAbleToShoo
 */
 
             this.sourceID = enemy.getID();
-            shoot(gameData, world, sourceID);
+            shoot(enemy);
 
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
@@ -63,11 +62,9 @@ public class EnemyControlSystem implements IEntityProcessingService, IAbleToShoo
         entity.setShapeY(shapey);
     }
 
-    @Override
-    public void shoot(GameData gameData, World world, String sourceID) {
-        if(Math.random()>0.99f){
-            ProjectilePlugin projectilePlugin = new ProjectilePlugin(sourceID);
-            projectilePlugin.start(gameData, world);
+    public void shoot(Entity enemy) {
+        if(Math.random()>0f){
+            enemy.setbShoot(true);
         }
     }
 }

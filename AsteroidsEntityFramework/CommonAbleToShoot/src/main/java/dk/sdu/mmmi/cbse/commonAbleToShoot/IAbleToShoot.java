@@ -10,5 +10,5 @@ public interface IAbleToShoot {
      * to true
      * @param
      */
-    void shoot(GameData gameData, World world, String sourceID);
+    void shoot(GameData gameData);
 }

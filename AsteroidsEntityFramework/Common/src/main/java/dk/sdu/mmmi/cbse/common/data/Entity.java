@@ -15,10 +15,22 @@ public class Entity implements Serializable {
     private float[] shapeY = new float[4];
     private float radius;
     private Map<Class, EntityPart> parts;
-    
+    private boolean bShoot = false;
+
+
+    public boolean getbShoot() {
+        return bShoot;
+    }
+
+    public void setbShoot(boolean bShoot) {
+        this.bShoot = bShoot;
+    }
+
+
     public Entity() {
         parts = new ConcurrentHashMap<>();
     }
+
 
     public PositionPart getPositionPart(){
         return this.getPart(PositionPart.class);

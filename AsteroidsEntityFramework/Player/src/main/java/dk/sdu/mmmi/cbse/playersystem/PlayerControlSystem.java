@@ -16,7 +16,7 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.*;
  *
  * @author jcs
  */
-public class PlayerControlSystem implements IEntityProcessingService, IAbleToShoot {
+public class PlayerControlSystem implements IEntityProcessingService{
     String sourceID;
 
     @Override
@@ -31,7 +31,7 @@ public class PlayerControlSystem implements IEntityProcessingService, IAbleToSho
             movingPart.setUp(gameData.getKeys().isDown(UP));
 
             this.sourceID = player.getID();
-            shoot(gameData, world, sourceID);
+            shoot(gameData, player);
 
             movingPart.process(gameData, player);
             positionPart.process(gameData, player);
@@ -64,11 +64,9 @@ public class PlayerControlSystem implements IEntityProcessingService, IAbleToSho
         entity.setShapeY(shapey);
     }
 
-    @Override
-    public void shoot(GameData gameData, World world, String sourceID) {
+    public void shoot(GameData gameData, Entity player) {
         if(gameData.getKeys().isDown(SPACE)){
-            ProjectilePlugin projectilePlugin = new ProjectilePlugin(sourceID);
-            projectilePlugin.start(gameData, world);
+            player.setbShoot(true);
         }
     }
 }

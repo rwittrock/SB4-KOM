@@ -10,14 +10,25 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 public class ProjectileControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
+        for(Entity entity : world.getEntities()){
+            if(entity.getbShoot() && entity.getPart(PositionPart.class)!=null){
+                PositionPart positionPart = entity.getPart(PositionPart.class);
+                Projectile projectile = new Projectile();
+                PositionPart projectilePositionPart = new PositionPart(positionPart.getX(), positionPart.getY(), positionPart.getRadians());
+
+                projectile.add(projectilePositionPart);
+                projectile.add(new MovingPart(0,100000,300,0));
+
+                world.addEntity(projectile);
+                entity.setbShoot(false);
+            }
+        }
+
         for (Entity projectile : world.getEntities(Projectile.class)) {
             PositionPart positionPart = projectile.getPart(PositionPart.class);
             MovingPart movingPart = projectile.getPart(MovingPart.class);
-
             //bullets are given high acceleration but set max speed, so they instantly
             //have high speed. setUp just makes it move
-            movingPart.setAcceleration(10000000);
-            movingPart.setMaxSpeed(300);
             movingPart.setUp(true);
 
 
