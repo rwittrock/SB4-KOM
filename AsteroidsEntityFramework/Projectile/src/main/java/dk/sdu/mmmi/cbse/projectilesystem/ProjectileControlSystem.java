@@ -3,6 +3,7 @@ package dk.sdu.mmmi.cbse.projectilesystem;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -18,7 +19,6 @@ public class ProjectileControlSystem implements IEntityProcessingService {
 
                 projectile.add(projectilePositionPart);
                 projectile.add(new MovingPart(0,100000,300,0));
-
                 world.addEntity(projectile);
                 entity.setbShoot(false);
             }
@@ -29,9 +29,8 @@ public class ProjectileControlSystem implements IEntityProcessingService {
             MovingPart movingPart = projectile.getPart(MovingPart.class);
             //bullets are given high acceleration but set max speed, so they instantly
             //have high speed. setUp just makes it move
+
             movingPart.setUp(true);
-
-
             movingPart.process(gameData, projectile);
             positionPart.process(gameData, projectile);
 

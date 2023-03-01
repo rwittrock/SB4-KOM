@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.commonAbleToShoot.IAbleToShoot;
 
 public class EnemyControlSystem implements IEntityProcessingService {
     String sourceID;
@@ -63,7 +62,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
     }
 
     public void shoot(Entity enemy) {
-        if(Math.random()>0f){
+        if(Math.random()>0.99f){
             enemy.setbShoot(true);
         }
     }

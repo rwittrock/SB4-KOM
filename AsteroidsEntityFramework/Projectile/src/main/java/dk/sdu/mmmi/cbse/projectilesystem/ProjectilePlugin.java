@@ -9,8 +9,6 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 public class ProjectilePlugin implements IGamePluginService {
 
-    private Entity projectile;
-
     public ProjectilePlugin() {
     }
 
@@ -20,10 +18,11 @@ public class ProjectilePlugin implements IGamePluginService {
     }
 
 
-
     @Override
     public void stop(GameData gameData, World world) {
         // Remove entities
-        world.removeEntity(projectile);
+        for (Entity shot : world.getEntities(Projectile.class)) {
+            world.removeEntity(shot);
+        }
     }
 }
