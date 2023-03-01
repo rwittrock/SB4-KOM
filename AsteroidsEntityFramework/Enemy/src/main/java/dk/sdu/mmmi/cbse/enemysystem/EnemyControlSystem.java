@@ -63,7 +63,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     public void shoot(Entity enemy) {
         if(Math.random()>0.99f){
-            enemy.setbShoot(true);
+            //enemy.setbShoot(true);
         }
     }
 }

@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.collisioncontrollersystem;
 
+import dk.sdu.mmmi.cbse.asteroidsystem.Asteroid;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -17,6 +18,19 @@ public class CollisionController implements IPostEntityProcessingService {
             if(projectilePositionPart.getY()> gameData.getDisplayHeight() - 10
                     || projectilePositionPart.getX() > gameData.getDisplayWidth() -10){
                 world.removeEntity(projectile);
+            }
+
+            for(Entity asteroid : world.getEntities(Asteroid.class)){
+                PositionPart asteroidPositionPart = asteroid.getPart(PositionPart.class);
+
+                
+
+                if (Math.sqrt((projectilePositionPart.getX() - asteroidPositionPart.getX())
+                    +(projectilePositionPart.getY() - asteroidPositionPart.getY()))
+                        <projectile.getRadius()+asteroid.getRadius()){
+                    world.removeEntity(projectile);
+                    world.removeEntity(asteroid);
+                }
             }
         }
     }

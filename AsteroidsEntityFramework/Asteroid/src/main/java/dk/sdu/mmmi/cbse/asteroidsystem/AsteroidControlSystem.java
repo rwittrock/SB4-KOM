@@ -17,7 +17,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
             MovingPart movingPart = asteroid.getPart(MovingPart.class);
 
             this.sourceID = asteroid.getID();
-
+            asteroid.setRadius(10);
             movingPart.setUp(true);
 
             movingPart.process(gameData, asteroid);
