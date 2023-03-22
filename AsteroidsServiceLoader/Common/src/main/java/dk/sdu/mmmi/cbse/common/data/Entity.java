@@ -15,12 +15,21 @@ public class Entity implements Serializable {
     private float radius;
     private float boundingCircleX;
     private float boundingCircleY;
+    private boolean bShoot = false;
 
     private Map<Class, EntityPart> parts;
 
     public Entity() {
         parts = new ConcurrentHashMap<>();
 
+    }
+
+    public boolean getbShoot() {
+        return bShoot;
+    }
+
+    public void setbShoot(boolean bShoot) {
+        this.bShoot = bShoot;
     }
 
     public void add(EntityPart part) {

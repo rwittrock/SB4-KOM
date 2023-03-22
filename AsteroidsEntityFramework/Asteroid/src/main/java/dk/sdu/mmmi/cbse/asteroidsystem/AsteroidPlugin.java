@@ -27,8 +27,8 @@ public class AsteroidPlugin implements IGamePluginService {
         float acceleration = 50;
         float maxSpeed = 100;
         float rotationSpeed = 1;
-        float x = gameData.getDisplayWidth() / 2;
-        float y = gameData.getDisplayHeight() / 2;
+        float x = (float) Math.random()* gameData.getDisplayWidth();
+        float y = (float) Math.random()* gameData.getDisplayHeight();
         float radians = (float) (Math.random()*3.1415f);
 
 
