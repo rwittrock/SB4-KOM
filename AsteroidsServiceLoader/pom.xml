@@ -16,10 +16,64 @@
         <module>Player</module>
         <module>Asteroid</module>
         <module>Collision</module>
+        <module>Projectile</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>dk.sdu.mmmi.cbse</groupId>
+                <artifactId>shadedlibgdx</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>
+                                exec
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>${java.home}</executable>
+                    <workingDirectory>.</workingDirectory>
+                    <longModulepath>false</longModulepath>
+                    <arguments>
+                        <argument>-XstartOnFirstThread</argument>
+                        <argument>-Dorg.lwjgl.utl.Debug=true</argument>
+                        <argument>-Djava.library.path=libs</argument>
+                        <argument>--module-path=mods-mvn</argument>
+                        <argument>--class-path=libs/*</argument>
+                        <argument>--module=Core/dk.sdu.mmmi.cbse.main.Main</argument>
+                    </arguments>
+                </configuration>
+
+
+            </plugin>
+        </plugins>
+    </build>
 </project>
