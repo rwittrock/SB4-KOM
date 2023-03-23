@@ -19,11 +19,11 @@ public class PlayerPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
         
         // Add entities to the world
-        player = createPlayerShip(gameData);
-        world.addEntity(player);
+        createPlayerShip(gameData, world);
+
     }
 
-    private Entity createPlayerShip(GameData gameData) {
+    private void createPlayerShip(GameData gameData, World world) {
 
         float deacceleration = 10;
         float acceleration = 200;
@@ -40,7 +40,7 @@ public class PlayerPlugin implements IGamePluginService {
         playerShip.add(new PositionPart(x, y, radians));
         playerShip.add(new LifePart(6,69)); 
         
-        return playerShip;
+        world.addEntity(playerShip);
     }
 
     @Override

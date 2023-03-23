@@ -1,15 +1,8 @@
 module Core {
-    requires gdx;
-    requires gdx.jnigen.loader;
-    requires gdx.platform;
-    requires gdx.backend.lwjgl3;
-    requires gdx.box2d;
-    requires gdx.box2d.platform;
-    requires gdx.freetype;
-    requires gdx.freetype.platform;
-    requires Asteroid;
-    requires Collision;
+    requires com.badlogic.gdx;
     requires common;
-    requires player;
-    requires Projectile;
+    requires java.desktop;
+    uses dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+    uses dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+    uses dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 }
