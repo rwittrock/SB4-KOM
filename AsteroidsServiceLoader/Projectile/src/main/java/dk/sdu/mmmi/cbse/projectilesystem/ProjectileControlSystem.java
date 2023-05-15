@@ -16,11 +16,12 @@ public class ProjectileControlSystem implements IEntityProcessingService {
                 System.out.println("Fire!");
                 PositionPart positionPart = entity.getPart(PositionPart.class);
                 Projectile projectile = new Projectile();
-                PositionPart projectilePositionPart = new PositionPart(positionPart.getX(), positionPart.getY(), positionPart.getRadians());
+                PositionPart projectilePositionPart = new PositionPart(generateX(positionPart.getX(), positionPart.getRadians()),
+                        generateY(positionPart.getY(), positionPart.getRadians()), positionPart.getRadians());
 
                 projectile.add(projectilePositionPart);
                 projectile.add(new MovingPart(0,100000,300,0));
-                projectile.add(new LifePart(1,10));
+                projectile.add(new LifePart(1));
                 world.addEntity(projectile);
                 entity.setbShoot(false);
             }
@@ -29,6 +30,7 @@ public class ProjectileControlSystem implements IEntityProcessingService {
         for (Entity projectile : world.getEntities(Projectile.class)) {
             PositionPart positionPart = projectile.getPart(PositionPart.class);
             MovingPart movingPart = projectile.getPart(MovingPart.class);
+            LifePart lifePart = projectile.getPart(LifePart.class);
             //bullets are given high acceleration but set max speed, so they instantly
             //have high speed. setUp just makes it move
 
@@ -37,7 +39,23 @@ public class ProjectileControlSystem implements IEntityProcessingService {
             positionPart.process(gameData, projectile);
 
             updateShape(projectile);
+            if(positionPart.getX()<10 || positionPart.getX()> gameData.getDisplayWidth()-10 || positionPart.getY()<10 || positionPart.getY()> gameData.getDisplayHeight()-10){
+                world.removeEntity(projectile);
+            }
+            // if entity is out of life - remove
+            if (lifePart.isDead()) {
+                world.removeEntity(projectile);
+            }
         }
+
+    }
+
+    public float generateX(double xPos, double rotation){
+        return (float) (xPos + 10*Math.cos(rotation));
+    }
+
+    public float generateY(double yPos, double rotation){
+        return (float) (yPos + 10*Math.sin(rotation));
     }
 
     private void updateShape(Entity entity) {

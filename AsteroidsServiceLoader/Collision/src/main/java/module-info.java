@@ -1,5 +1,4 @@
 module Collision {
-    exports dk.sdu.mmmi.cbse.collision;
 
     requires common;
 
