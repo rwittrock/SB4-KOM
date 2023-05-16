@@ -6,20 +6,13 @@
         <artifactId>AsteroidsServiceLoader</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>Asteroid</artifactId>
+    <artifactId>Enemy</artifactId>
     <packaging>jar</packaging>
-    <name>Asteroid</name>
-
     <dependencies>
         <dependency>
-            <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>Common</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>CommonAsteroids</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>CommonEnemy</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
